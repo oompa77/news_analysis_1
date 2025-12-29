@@ -1,0 +1,12 @@
+# Simplified requirements for Python 3.13 compatibility
+streamlit
+google-generativeai
+selenium
+webdriver-manager
+beautifulsoup4
+requests
+pandas
+plotly
+openpyxl
+PyGithub
+python-dotenv

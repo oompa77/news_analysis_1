@@ -1,0 +1,650 @@
+{
+  "keyword": "RSV 바이러스",
+  "period": "2025-12-08 ~ 2025-12-29",
+  "summary_stats": {
+    "positive": 38,
+    "negative": 40,
+    "neutral": 13
+  },
+  "report": "# RSV 바이러스 이슈 보고서\n\n## 1. 개요 (Executive Summary)\n\n본 보고서는 'RSV 바이러스'에 대한 최근 91건의 뉴스 데이터를 분석하여 보도 동향, 여론 흐름, 주요 쟁점 및 향후 전망을 제시합니다. 전체 기사에서 긍정적 38건, 부정적 40건, 중립적 13건으로 부정적 톤이 다소 우세한 경향을 보였습니다. 이는 RSV 바이러스의 확산 및 위험성에 대한 우려가 반영된 것으로 분석됩니다. 주요 보도 내용은 **영유아 및 고령층의 RSV 감염 위험 증가**, **RSV 백신 출시 및 허가 소식**, **바이러스 확산 방지를 위한 예방 및 관리 중요성 강조**, **겨울철 호흡기 질환 동시 유행 경고** 등입니다.\n\n## 2. 여론 흐름 및 전환점\n\n### ### Phase 1: RSV 위험성 경고 및 확산 우려 (12월 15일 이전)\n\n*   **주요 보도 내용**: 겨울철을 맞아 영유아를 중심으로 RSV 감염 환자가 증가하고 있다는 소식. 감기와 유사한 증상이지만 폐렴으로 이어질 수 있다는 경고. 산후조리원, 어린이집 등 밀집 시설에서의 감염 위험성 부각. 조지아 등 해외 RSV 환자 증가 소식도 일부 보도됨.\n*   **대중 반응**: 바이러스 감염에 대한 불안감 증폭. 특히 영유아를 둔 부모들의 우려가 컸으며, 예방 및 관리에 대한 관심 증대.\n*   **감성 기조**: 부정적 (우려, 경고)\n\n### ### Phase 2: 백신 출시와 기대감 형성 (12월 22일경)\n\n*   **주요 보도 내용**: 모더나코리아의 RSV mRNA 백신 '엠레스비아' 국내 최초 허가 소식이 집중적으로 보도됨. 이와 함께 아스트라제네카의 '브리스토' 등 다른 RSV 백신 및 항체 주사제 관련 소식도 함께 다뤄짐. 백신 출시가 RSV 예방 및 항생제 오남용 감소에 기여할 것이라는 긍정적 전망 제시.\n*   **대중 반응**: 신약 출시 및 허가에 대한 기대감 형성. RSV 감염 예방에 대한 희망적인 메시지 전달. 백신 가격에 대한 일부 언급도 있었으나 전반적으로는 긍정적인 관심.\n*   **감성 기조**: 긍정적 (기대, 희망) 및 중립적 (사실 전달)\n\n### ### Phase 3: 겨울철 호흡기 질환 동시 유행 및 예방 강조 (12월 22일 이후)\n\n*   **주요 보도 내용**: 독감 환자 수는 주춤했지만, RSV를 비롯한 다른 호흡기 질환 환자 수는 4주 연속 증가하고 있다는 분석. 충남 지역의 독감 및 호흡기 바이러스 검출률 급증 소식. RSV가 영유아뿐 아니라 고령층까지 위협한다는 보도. 단순 감기로 여기지 말고 세심한 관찰과 예방 관리가 필요하다는 당부.\n*   **대중 반응**: RSV 감염 위험성에 대한 재인식. 겨울철 전반적인 호흡기 질환 유행에 대한 경각심 고취. 개인위생 수칙 준수 및 예방접종의 중요성 강조.\n*   **감성 기조**: 부정적 (경고, 우려) 및 중립적 (정보 제공)\n\n### ### 전환점 (Turning Point)\n\n**2025년 12월 22일경, 모더나코리아의 RSV mRNA 백신 '엠레스비아' 국내 허가 소식.**\n\n이 시점을 기점으로 RSV 관련 보도는 '위험성 경고'에서 '예방 및 치료'로 무게추가 이동하는 양상을 보였습니다. 백신 출시 이전에는 RSV 감염의 위험성과 확산 가능성에 대한 우려가 주로 제기되었으나, 백신 허가 소식 이후에는 신약에 대한 기대감과 함께 RSV 예방의 중요성이 더욱 부각되었습니다. 이는 RSV라는 바이러스 자체의 위험성 인식을 높이는 동시에, 이를 극복할 수 있는 해결책에 대한 긍정적인 시각을 형성하는 데 기여했습니다. 또한, 백신 출시 소식은 RSV를 단순히 소아 질환으로만 보던 시각에서 벗어나 성인 및 고령층까지 예방의 필요성이 확장될 수 있음을 시사했습니다.\n\n## 3. 헤드라인 및 프레임 분석\n\n### 3.1. 프레임 유형 분류\n\n| 프레임명         | 기사 건수 | 비율(%) | 대표 사례 또는 특징 설명                                                                                                          |\n| :--------------- | :-------- | :------ | :-------------------------------------------------------------------------------------------------------------------------------- |\n| **건강/질병 위험** | 45        | 49.5%   | RSV 감염의 증상, 위험성, 합병증(폐렴 등) 강조. 영유아, 고령층 등 고위험군에 대한 집중 조명. 겨울철 호흡기 질환 전반의 위험성 경고.          |\n| **기술/혁신 (백신)** | 28        | 30.8%   | RSV 백신(mRNA 백신, 항체 주사제 등)의 개발, 허가, 출시 소식. 백신의 효과 및 안전성 관련 정보 전달. 신약 개발의 진전.                       |\n| **예방/관리**      | 12        | 13.2%   | 개인위생 수칙(손 씻기, 마스크 착용 등), 시설 방역(산후조리원, 어린이집 등), 예방접종의 중요성 강조.                                      |\n| **사회적 영향/비용** | 6         | 6.5%    | RSV 입원으로 인한 부모의 생산성 손실, 의료비 부담 등 경제적, 사회적 비용 언급.                                                        |\n\n### 3.2. 헤드라인 톤 분석\n\n| 톤 유형명           | 대표 어휘 예시                                                                                                  | 비율(%) |\n| :------------------ | :-------------------------------------------------------------------------------------------------------------- | :------ |\n| **경고/우려 (부정적)** | 위험, 비상, 위협, 급증, 주의, 경고, 비상등, 확산, 감염                                                            | 43.9%   |\n| **정보/사실 전달 (중립적)** | 보도, 발표, 허가, 승인, 출시, 증가, 감소, 분석, 현황                                                              | 30.8%   |\n| **기대/긍정 (긍정적)**   | 잡는다, 희망, 기대, 효과, 해결, 진전, 기대감                                                                      | 23.1%   |\n| **논평/분석 (중립적)**   | 분석, 전망, 시사, 평가                                                                                            | 2.2%    |\n\n*   **톤 유형별 비율 합계**: 43.9 + 30.8 + 23.1 + 2.2 = 100%\n\n### 3.3. 토픽 모델링\n\n| 주제명                   | 대표 키워드                                                               | 관련 기사 비율 |\n| :--------------------- | :------------------------------------------------------------------------ | :------------- |\n| RSV 감염 현황 및 위험성    | RSV, 감염, 영유아, 고령층, 호흡기 질환, 증상, 폐렴, 겨울철, 증가           | 40%            |\n| RSV 백신 개발 및 허가    | RSV 백신, 모더나, mRNA, 엠레스비아, 허가, 출시, 개발, 항체 주사제, 신약     | 35%            |\n| RSV 예방 및 관리         | 예방, 관리, 주의, 개인위생, 시설방역, 백신 접종, 산후조리원, 어린이집     | 15%            |\n| 기타 호흡기 질환 동시 유행 | 독감, 인플루엔자, 호흡기 바이러스, 동시 유행, 검출률                      | 10%            |\n\n### 3.4. 키워드 네트워크\n\n#### 키워드 분석\nRSV 바이러스 관련 뉴스는 '영유아'와 '겨울철'이라는 시공간적 배경 속에서 '감염', '증상', '위험'과 같은 질병 자체의 특성 및 '백신', '예방', '관리'와 같은 대응책에 대한 논의가 중심을 이루고 있음을 보여줍니다. 특히 '고령층'이라는 키워드가 추가되면서 RSV의 위협 범위가 확장되고 있음을 알 수 있습니다. '독감', '호흡기 질환'과의 비교 언급도 빈번하여, RSV를 다른 호흡기 감염병과 함께 묶어 인식하는 경향이 나타납니다.\n\n#### 유관 키워드 TOP 10\n\n1.  <mark>RSV/호흡기세포융합바이러스</mark> (RSV 바이러스의 정식 명칭 및 핵심 키워드)\n2.  <mark>영유아/소아</mark> (RSV 감염의 주요 취약 계층)\n3.  <mark>겨울철</mark> (RSV 유행 시기 및 환경적 요인)\n4.  <mark>백신/mRNA 백신/항체 주사제</mark> (RSV 예방 및 치료를 위한 기술적 해결책)\n5.  <mark>감염/확산/증가</mark> (바이러스의 전파 및 유행 동향)\n6.  <mark>증상/폐렴</mark> (RSV 감염 시 나타나는 주요 임상적 특징)\n7.  <mark>예방/관리/주의</mark> (바이러스 확산 방지를 위한 개인적, 사회적 노력)\n8.  <mark>고령층</mark> (RSV 감염의 또 다른 주요 취약 계층으로 부상)\n9.  <mark>독감/호흡기 질환</mark> (RSV와 비교되거나 함께 언급되는 다른 감염병)\n10. <mark>허가/출시/개발</mark> (백신 및 치료제 관련 산업 동향)\n\n## 4. 주요 쟁점 분석\n\n*   **쟁점 1: RSV 감염의 위험성과 확장된 취약 계층**\n    *   **구체적 논점**: RSV가 영유아에게 치명적일 수 있다는 점과 함께, 고령층에게도 위협적인 질병으로 부상하고 있다는 점. 단순 감기로 오인하여 증상을 간과할 경우 폐렴 등 심각한 합병증으로 이어질 수 있다는 점.\n    *   **관련 기사 건수/비율**: 약 45건 / 49.5%\n    *   **대중 반응**: RSV에 대한 경각심 증대, 특히 고위험군 관리에 대한 중요성 인식.\n    *   **잠재적 영향**: 예방 및 진단에 대한 적극적인 관심 유도, 관련 의료 서비스 수요 증가.\n\n*   **쟁점 2: RSV 백신 및 치료제 개발 현황과 기대 효과**\n    *   **구체적 논점**: 모더나의 mRNA 백신 '엠레스비아' 국내 허가를 필두로 한 RSV 백신 및 항체 주사제의 개발 및 상용화. 이러한 백신들이 RSV 예방 및 관련 입원율 감소에 기여할 것이라는 기대.\n    *   **관련 기사 건수/비율**: 약 28건 / 30.8%\n    *   **대중 반응**: 신약 개발에 대한 긍정적 인식, 질병 극복에 대한 희망. 일부에서는 높은 백신 가격에 대한 언급도 있음.\n    *   **잠재적 영향**: 백신 시장 성장, 관련 제약 산업 활성화, 공중 보건 정책에 대한 영향.\n\n*   **쟁점 3: 겨울철 호흡기 질환 동시 유행 및 예방의 중요성**\n    *   **구체적 논점**: 독감 외 RSV 등 다양한 호흡기 바이러스가 동시에 유행하며 확산세를 보이고 있다는 점. 개인위생 수칙 준수, 시설 방역 강화, 적절한 예방접종의 필요성 강조.\n    *   **관련 기사 건수/비율**: 약 12건 / 13.2%\n    *   **대중 반응**: 겨울철 전반적인 호흡기 건강 관리에 대한 관심 증대, 개인위생 실천 의지 강화.\n    *   **잠재적 영향**: 공중 보건 캠페인 활성화, 개인 및 사회적 차원의 예방 노력 강화.\n\n## 5. 언론사 비교 분석\n\n### 5.1. 언론사별 편향성 평가\n\n보도 데이터는 특정 성향의 언론사들이 두드러지게 나타나기보다는, 전반적으로 RSV 바이러스의 위험성과 대응 방안에 대한 정보 전달 및 경고에 초점을 맞추고 있습니다. 경제/의료 전문 매체들은 백신 개발 및 허가 소식에 주목하는 경향이 강하며, 종합 일간지 및 방송사들은 RSV의 위험성과 예방의 중요성을 대중적인 언어로 전달하는 데 집중하는 것으로 보입니다. 특정 보수/진보 성향이 뚜렷하게 드러나는 프레임이나 어조의 차이는 발견되지 않았습니다.\n\n### 5.2. 언론사별 보도 분포\n\n*   **활발한 상위 5개사**:\n    1.  뉴스1 (6건, 6.6%)\n    2.  뉴시스 (6건, 6.6%)\n    3.  의약뉴스 (5건, 5.5%)\n    4.  메디칼타임즈 (4건, 4.4%)\n    5.  헬스조선 (3건, 3.3%) / 여성경제신문 (3건, 3.3%) / 코메디닷컴 (3건, 3.3%) / MBN (3건, 3.3%) / 중앙일보 (3건, 3.3%) / 스포츠조선 (3건, 3.3%) / 메트로신문 (3건, 3.3%) / 시민일보 (3건, 3.3%) / 안전신문 (3건, 3.3%) / 약업신문 (3건, 3.3%) / 아시아투데이 (3건, 3.3%) / 뉴시스 (3건, 3.3%) / SK브로드밴드 (3건, 3.3%) / CNB뉴스 (3건, 3.3%) / 메디소비자뉴스 (3건, 3.3%) / 약사공론 (3건, 3.3%) / 금강일보 (3건, 3.3%) / 아시아경제 (3건, 3.3%) / 헬로디디 (3건, 3.3%) / 중앙일보 헬스미디어 (3건, 3.3%)\n\n    *   **대형 매체 vs 중소 매체 비교 및 특징 분석**:\n        대형 종합 뉴스 통신사(뉴스1, 뉴시스)와 의료/제약 전문 매체(의약뉴스, 메디칼타임즈)에서 RSV 관련 보도가 활발하게 이루어지고 있습니다. 이는 RSV 바이러스가 국민 건강에 미치는 영향이 크고, 관련 백신 및 치료제 개발 등 산업적 이슈가 중요하기 때문으로 분석됩니다. 특히 의료 전문 매체들은 백신 허가, 기술 개발 등 심층적인 정보를 다루는 데 강점을 보였습니다. 종합 일간지 및 방송사들은 좀 더 대중적인 위험 경고 및 예방 메시지 전달에 초점을 맞추는 경향을 보였습니다.\n\n## 6. 결론 및 향후 전망\n\n### 6.1. 종합 평가\n\n*   **이슈 심각도**: **상** (영유아 및 고령층 등 취약 계층에 대한 위험성이 높고, 잠재적 합병증이 있으며, 동시 유행하는 다른 호흡기 질환과의 연관성으로 인해)\n*   **대중 감성 방향**: **부정적 > 긍정적 > 중립적** (감염 위험성에 대한 우려가 여전히 높으나, 백신 개발 등 긍정적 모멘텀도 존재)\n*   **주요 리스크 요인**:\n    *   RSV 감염의 지속적인 확산 및 고위험군 내 중증화.\n    *   백신 접근성(가격, 공급 등) 및 접종률 확보 문제.\n    *   독감 등 타 호흡기 질환과의 동시 유행으로 인한 의료 시스템 부담 가중.\n    *   RSV에 대한 대중의 인식 부족 및 과소평가.\n*   **주요 기회 요인**:\n    *   RSV 백신 및 치료제 개발 및 상용화를 통한 예방/관리 역량 강화.\n    *   RSV 위험성에 대한 언론 보도를 통한 대중 인식 제고.\n    *   정부 차원의 예방 접종 지원 정책 도입 가능성.\n\n### 6.2. 향후 전망 시나리오\n\n*   **긍정적 전개 (Best)**:\n    *   **가능성**: 중 (20-30%)\n    *   **예상 결과 및 조건**:\n        *   RSV 백신 접종이 적극적으로 이루어져 영유아 및 고령층의 중증화 및 입원율이 현저히 감소.\n        *   효과적인 예방 캠페인을 통해 개인위생 관리 수준 향상.\n        *   정부의 예방 접종 지원 확대 정책 시행.\n        *   겨울철 호흡기 질환 동시 유행에도 불구하고 의료 시스템 부담이 관리 가능한 수준으로 유지.\n\n*   **현상 유지 (Likely)**:\n    *   **가능성**: 중상 (50-60%)\n    *   **예상 결과 및 조건**:\n        *   RSV 백신이 출시되지만, 높은 가격 및 정보 부족으로 접종률이 기대만큼 높지 않음.\n        *   여전히 영유아 및 고령층 중심의 RSV 감염 발생 및 중증 사례 지속.\n        *   개인 및 시설 단위의 예방 노력이 이루어지나, 동시다발적인 호흡기 질환 유행으로 보건 당국의 부담 지속.\n        *   언론 보도를 통해 RSV 위험성이 주기적으로 환기될 것임.\n\n*   **부정적 심화 (Worst)**:\n    *   **가능성**: 하 (10-20%)\n    *   **예상 결과 및 조건**:\n        *   RSV 백신 접근성이 낮거나 효과에 대한 불신이 확산되어 접종률이 저조.\n        *   겨울철 RSV 및 독감 등의 동시 유행이 더욱 심각해져 의료 시스템 붕괴 우려 발생.\n        *   영유아 및 고령층의 RSV 관련 중증 환자 및 사망자 수 급증.\n        *   RSV 위험성에 대한 대중적 경각심 부족으로 예방 노력이 효과를 발휘하지 못함.\n\n### 6.3. 권고사항\n\n*   **커뮤니케이션 전략**:\n    *   RSV 바이러스의 위험성과 함께, 신속하게 개발된 백신의 긍정적 효과 및 예방의 중요성을 균형 있게 강조하는 메시지 개발.\n    *   영유아 부모, 고령층 본인 및 보호자를 대상으로 한 맞춤형 정보 제공 및 대중 캠페인 강화.\n    *   의료 전문가와의 협력을 통해 백신 효과 및 안전성에 대한 신뢰 구축.\n\n*   **모니터링 포인트**:\n    *   RSV 확진 환자 수 추이 및 중증화율, 사망률 변화.\n    *   RSV 백신 접종률 현황 및 관련 접근성(가격, 공급) 이슈.\n    *   독감 등 다른 호흡기 질환과의 동시 유행 추세 및 의료 시스템 영향.\n    *   주요 언론의 RSV 관련 보도 프레임 변화 및 대중 반응.\n\n*   **리스크 관리 방안**:\n    *   RSV 백신에 대한 국가 예방 접종 지원 확대 논의 및 검토.\n    *   의료기관 및 지역 보건소를 통한 RSV 조기 진단 및 치료 역량 강화.\n    *   산후조리원, 어린이집, 요양시설 등 고위험 시설에 대한 방역 지침 강화 및 관리 감독 철저.\n    *   RSV 관련 허위 정보 및 오해 확산 방지를 위한 팩트 체크 강화.",
+  "articles": [
+    {
+      "title": "독감 환자 수 '주춤'… 반면 4주 연속 증가한 호흡기 질환 있다?",
+      "link": "https://health.chosun.com/site/data/html_dir/2025/12/26/2025122602842.html",
+      "press": "헬스조선",
+      "date": "2025-12-28",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "독감 환자 줄었는데···영유아 위험한 호흡기 바이러스 4주 연속 증가",
+      "link": "https://www.womaneconomy.co.kr/news/articleView.html?idxno=247440",
+      "press": "여성경제신문",
+      "date": "2025-12-28",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "\"급성 호흡기감염증 바이러스 잡는다\"…백신 출시 '봇물'",
+      "link": "https://www.newsis.com/view/NISX20251219_0003448163",
+      "press": "뉴시스",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "[바이오스냅] 모더나코리아, 호흡기세포융합바이러스 mRNA 백신 국내 허...",
+      "link": "https://www.yna.co.kr/view/AKR20251219061200017?input=1195m",
+      "press": "연합뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "모더나코리아, RSV 백신 국내 허가 획득…\"mRNA 적용\"",
+      "link": "https://www.newsis.com/view/NISX20251219_0003447669",
+      "press": "뉴시스",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "모더나 RSV mRNA 백신 국내 최초 허가",
+      "link": "https://www.mk.co.kr/article/11495227",
+      "press": "매일경제",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "식약처, 모더나 RSV mRNA 백신 '엠레스비아' 승인",
+      "link": "https://www.news1.kr/bio/general/6012986",
+      "press": "뉴스1",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "겨울철 영유아 RSV 감염 증가세…감기와 유사, 세심한 관찰 필요",
+      "link": "https://www.sportschosun.com/life/2025-12-24/202512240100140540022660",
+      "press": "스포츠조선",
+      "date": "2025-12-24",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "RSV 예방 항체주사, 경제성 평가 입증으로 NIP 첫발 떼나",
+      "link": "https://www.dailypharm.com/user/news/334290?REFERER=NP",
+      "press": "데일리팜",
+      "date": "2025-12-26",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "감기와 비슷한 RSV 감염 증가 추세…\"산후조리원·어린이집 예방 관리 강...",
+      "link": "https://www.kyeonggi.com/article/20251224580239",
+      "press": "경기일보",
+      "date": "2025-12-25",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "충남 인플루엔자 질환 급증…바이러스 검출률 작년의 3배",
+      "link": "https://www.news1.kr/local/daejeon-chungnam/6009514",
+      "press": "뉴스1",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "충남 호흡기 바이러스 검출 급증…시기도 앞당겨져",
+      "link": "https://www.nocutnews.co.kr/news/6443698?utm_source=naver&utm_medium=article&utm_campaign=20251216110250",
+      "press": "노컷뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "\"아기들 병인 줄 알았는데\" RS 바이러스, 고령층도 위협",
+      "link": "http://www.mbn.co.kr/pages/news/newsView.php?news_seq_no=5162462",
+      "press": "MBN",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "[제약업계 소식] 12월 19일",
+      "link": "http://www.doctorstimes.com/news/articleView.html?idxno=235949",
+      "press": "의사신문",
+      "date": "2025-12-22",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "모더나코리아, 호흡기세포융합바이러스 mRNA 백신 '엠레스비아프리필드...",
+      "link": "http://www.newsmp.com/news/articleView.html?idxno=250701",
+      "press": "의약뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "\"단순 감기 아니에요\"…겨울철 RSV 확산 비상",
+      "link": "http://www.bokuennews.com/news/article.html?no=271300",
+      "press": "보건뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "\"아기들 병인 줄 알았는데\" RS 바이러스, 고령층도 위협",
+      "link": "http://www.mbn.co.kr/pages/news/newsView.php?news_seq_no=5162407",
+      "press": "MBN",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "RSV 예방이 영유아 항생제 오남용 줄인다 [줌인IT]",
+      "link": "https://it.chosun.com/news/articleView.html?idxno=2023092153113",
+      "press": "IT조선",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "베이포투스, 아브리스보 대비 RSV 관련 입원 위험 ↓",
+      "link": "http://www.newsmp.com/news/articleView.html?idxno=250812",
+      "press": "의약뉴스",
+      "date": "2025-12-26",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "영유아에서 성인으로 확장되는 RSV 백신...시장 커질까 관심",
+      "link": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1166537&ref=naverpc",
+      "press": "메디칼타임즈",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "모더나코리아, RSV mRNA 백신 '엠레스비아프리필드시린지' 국내 허가",
+      "link": "https://www.rapportian.com/news/articleView.html?idxno=230510",
+      "press": "라포르시안",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "영유아 위협하는 'RSV' 입원환자 증가…증상 세심히 살펴야",
+      "link": "https://www.newsis.com/view/NISX20251210_0003435644",
+      "press": "뉴시스",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "어린이집·학교 RSV 예방 중요성 부각…디엔디전자 전해수 살균수 '나오...",
+      "link": "https://www.mt.co.kr/industry/2025/12/18/2025121814004946708",
+      "press": "머니투데이",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "식약처, RSV 백신 ‘엠레스비아’ 허가…첫 신속 허가 적용 바이오 신약",
+      "link": "https://mdtoday.co.kr/news/view/1065594919129919",
+      "press": "메디컬투데이",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "신약 품목허가 절차 적용 '바이오 신약' 첫 허가",
+      "link": "http://www.bosa.co.kr/news/articleView.html?idxno=2265992",
+      "press": "의학신문",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "60만원 주사에 맘카페 발칵…영유아 위협하는 감염병 비상",
+      "link": "https://www.joongang.co.kr/article/25389628",
+      "press": "중앙일보",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "안양시 동안구보건소, RSV 감염증 주의 당부",
+      "link": "http://www.metroseoul.co.kr/article/20251215500341",
+      "press": "메트로신문",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "안양시 동안구보건소, 호흡기세포융합바이러스(RSV) 감염증 주의 당부",
+      "link": "https://www.siminilbo.co.kr/news/newsview.php?ncode=1160284469217493",
+      "press": "시민일보",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "“어, 감기 아니고 폐렴?”...호흡기병 예방엔 ‘두 곳’ 청결 필수",
+      "link": "https://kormedi.com/?p=2772367",
+      "press": "코메디닷컴",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "안양시 동안구보건소, 호흡기세포융합바이러스(RSV) 감염증 주의 당부",
+      "link": "https://www.safetynews.co.kr/news/articleView.html?idxno=244571",
+      "press": "안전신문",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "글락소 RSV 백신 EU 접종대상 확대 2월 결론",
+      "link": "https://www.yakup.com/news/index.html?mode=view&cat=16&nid=320589",
+      "press": "약업신문",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "충남 출산·돌봄시설 바이러스 검사 결과 모두 안전",
+      "link": "https://www.newsfreezone.co.kr/news/articleView.html?idxno=663605",
+      "press": "뉴스프리존",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "충남 산후조리원·어린이집, 바이러스 검사 결과 '안전'",
+      "link": "http://www.newstnt.com/news/articleView.html?idxno=566152",
+      "press": "뉴스티앤티",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "[제약+] 휴메딕스, PN·HA필러 '밸피앤' 확증 임상 완료 外",
+      "link": "https://news.dealsitetv.com/articles/162987",
+      "press": "딜사이트경제TV",
+      "date": "2025-12-22",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "조지아서 겨울철 독감·RSV 환자 증가",
+      "link": "https://www.koreadaily.com/article/20251210143643763",
+      "press": "미주중앙일보",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "美 FDA, 영아용 RSV 항체 주사제 안전성 점검 착수",
+      "link": "https://kormedi.com/?p=2771127",
+      "press": "코메디닷컴",
+      "date": "2025-12-15",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "충남도, '호흡기 바이러스' 유행 가속화...개인 위생 수칙 강조",
+      "link": "http://www.breaknews.com/1169621",
+      "press": "브레이크뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "생명연, '극미량 바이러스 RNA 직접 검출' 크리스퍼 진단기술 개발",
+      "link": "https://www.news1.kr/local/daejeon-chungnam/6005047",
+      "press": "뉴스1",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "유전자 증폭 없이 바이러스 RNA 즉시 확인, 생명연 新진단기술 개발",
+      "link": "http://www.hellodd.com/news/articleView.html?idxno=110225",
+      "press": "헬로디디",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "RSV 입원으로 부모 생산성 손실, 예방 항체주사로 입원 감소 기대",
+      "link": "https://jhealthmedia.joins.com/news/articleView.html?idxno=31499",
+      "press": "중앙일보 헬스미디어",
+      "date": "2025-12-08",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "'윤전일♥' 김보미 5세子, 작은 손에 꽂힌 주사바늘...바이러스로 입원...",
+      "link": "https://www.sportschosun.com/entertainment/2025-12-11/202512110100069480011114",
+      "press": "스포츠조선",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "겨울철 호흡기감염병 ‘비상등’…소아·영유아·고령층 동시 위협",
+      "link": "https://www.asiatoday.co.kr/view.php?key=20251210010005798",
+      "press": "아시아투데이",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "겨울철 호흡기감염병 동시 유행…\"고위험군 예방접종 중요\"",
+      "link": "https://www.newsis.com/view/NISX20251210_0003435560",
+      "press": "뉴시스",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "코로나19·RSV \"입원필요도·중증도 증가\"",
+      "link": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=162426",
+      "press": "의협신문",
+      "date": "2025-12-08",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "전주시, 독감 환자 14배 급증…RSV 동시 유행 비상",
+      "link": "https://news.skbroadband.com/news/articleView.html?idxno=213017",
+      "press": "SK브로드밴드",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "″감기인 줄 알았는데 폐렴으로″…고양시, 영유아 RSV 급증에 산후조리...",
+      "link": "https://www.cnbnews.com/news/article.html?no=767157",
+      "press": "CNB뉴스",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "RSV, 전 연령 위협하는 호흡기 감염… 성인 예방접종 필요성 커져",
+      "link": "http://www.medisobizanews.com/news/articleView.html?idxno=132045",
+      "press": "메디소비자뉴스",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "FDA, 영아 RSV 예방 주사 안전성 점검…머크·AZ·사노피 촉각",
+      "link": "https://www.kpanews.co.kr/article/show.asp?idx=266139&category=D",
+      "press": "약사공론",
+      "date": "2025-12-15",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "[특별기고] \"기침 한 번에 퍼지는 바이러스, 함께 막아요!\"",
+      "link": "https://www.ggilbo.com/news/articleView.html?idxno=1129563",
+      "press": "금강일보",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "\"PCR 없이도 '바이러스' 신속·정확 검출…현장 대응력 향상\"",
+      "link": "https://view.asiae.co.kr/article/2025121208342672889",
+      "press": "아시아경제",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "독감, 전파 빠르고 합병증 위험 커…“영유아·노인은 백신접종 필수”...",
+      "link": "https://www.sedaily.com/NewsView/2H1RZZ931O",
+      "press": "서울경제",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "독감 '사상 최악'…일주일간 7만여명 발병",
+      "link": "https://www.koreadaily.com/article/20251228174001911",
+      "press": "미주중앙일보",
+      "date": "2025-12-29",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "울산보건환경연구원, 감염병 진단검사 전국 최고 입증",
+      "link": "https://www.viva100.com/article/20251229501188",
+      "press": "브릿지경제",
+      "date": "2025-12-29",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "유바이오로직스, 단백질 재조합 넘어 차세대 백신 개발 역량 입증",
+      "link": "http://www.hansbiz.co.kr/news/articleView.html?idxno=804107",
+      "press": "한스경제",
+      "date": "2025-12-29",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "제약업계, 겨울철 '독감 예방' 치료제 출시·개발 박차",
+      "link": "http://www.wsobi.com/news/articleView.html?idxno=299340",
+      "press": "여성소비자신문",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "질병청 \"백신·치료제 국산화…공공백신 개발 지원\"",
+      "link": "https://www.nocutnews.co.kr/news/6444066?utm_source=naver&utm_medium=article&utm_campaign=20251216053254",
+      "press": "노컷뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "감염병 백신·치료제 자급화…'200일내 개발·30일내 검사체계' 구축",
+      "link": "https://n.news.naver.com/mnews/article/277/0005694509?sid=102",
+      "press": "아시아경제",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "대상포진, 치료비 급증하는데 예방은 개인부담 … NIP 도입 왜 늦나",
+      "link": "https://biz.newdaily.co.kr/site/data/html/2025/12/24/2025122400201.html",
+      "press": "뉴데일리",
+      "date": "2025-12-24",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "[사설] 호흡기 감염병 유행, 방역수칙 철저히 지키자",
+      "link": "https://www.jjan.kr/article/20251210500067",
+      "press": "전북일보",
+      "date": "2025-12-15",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "겨울철 인플루엔자 유행 지속…표본감시기관 확대, 어르신 등 고위험군...",
+      "link": "https://medicalworldnews.co.kr/news/view.php?idx=1510971780",
+      "press": "메디컬월드뉴스",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "\"고위험군, 인플루엔자·코로나19 백신 접종 필수\"",
+      "link": "https://www.sisajournal.com/news/articleView.html?idxno=356045",
+      "press": "시사저널",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "12월 16일 미리 보는 MBN 뉴스7",
+      "link": "http://www.mbn.co.kr/pages/news/newsView.php?news_seq_no=5162325",
+      "press": "MBN",
+      "date": "2025-12-22",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "진안군, 겨울철 호흡기질환 확산에 '주의보'…감염병 예방수칙 준수 당...",
+      "link": "http://www.jeollailbo.com/news/articleView.html?idxno=786197",
+      "press": "전라일보",
+      "date": "2025-12-08",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "진안군, 겨울철 호흡기감염병 주의 당부",
+      "link": "http://sjbnews.com/news/news.php?number=866532",
+      "press": "새전북신문",
+      "date": "2025-12-08",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "전주시, 겨울철 호흡기감염병 동시 유행 '비상'…대응체계 강화",
+      "link": "http://www.domin.co.kr/news/articleView.html?idxno=1538393",
+      "press": "전북도민일보",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "내년 의원급 표본감시기관 800곳으로 3배↑…\"감염병 조기 감지\"",
+      "link": "https://www.yna.co.kr/view/AKR20251210099100530?input=1195m",
+      "press": "연합뉴스",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "제목 없음",
+      "link": "https://n.news.naver.com/mnews/article/296/0000095513?sid=102",
+      "press": "코메디닷컴",
+      "date": "2025-12-15",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "겨울 독감 다시 확산… 영유아·아동 중심 '주의보'",
+      "link": "https://health.chosun.com/site/data/html_dir/2025/12/11/2025121101953.html",
+      "press": "헬스조선",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "제목 없음",
+      "link": "https://n.news.naver.com/mnews/article/076/0004355072?sid=102",
+      "press": "스포츠조선",
+      "date": "2025-12-15",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "[인터뷰] \"중증 질환 건보 확대 종합 판단해야\"…정은경, 탈모 급여화 '...",
+      "link": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008372216&plink=ORI&cooper=NAVER",
+      "press": "SBS",
+      "date": "2025-12-22",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "'감염병·해충' 동시에 잡았다…충남 '현장 검증형 예방 성과' 확인",
+      "link": "https://www.bzeronews.com/news/articleView.html?idxno=807008",
+      "press": "불교공뉴스",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "국내 독감 감소 추세이지만 '글로벌 유행' 지속",
+      "link": "https://www.dailymedi.com/news/news_view.php?wr_id=932025",
+      "press": "데일리메디",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "보령시, 국가기준점 정비 등 토지행정 성과 최우수 [힘쎈충남 브리핑]",
+      "link": "https://www.kukinews.com/article/view/kuk202512140016",
+      "press": "쿠키뉴스",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "[알찬생활] 심상치 않은 겨울철 감염병…‘트리플데믹’ 유의",
+      "link": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8434981&ref=A",
+      "press": "KBS",
+      "date": "2025-12-22",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "대구 중구보건소, 결핵 예방 달력 제작·배부",
+      "link": "http://www.hansbiz.co.kr/news/articleView.html?idxno=798767",
+      "press": "한스경제",
+      "date": "2025-12-08",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "\"만성질환 통합 관리센터 설치 계획\"",
+      "link": "https://www.100ssd.co.kr/news/articleView.html?idxno=204302",
+      "press": "백세시대",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "도비도·난지도 해양관광복합단지 조성 본격화 [힘쎈충남 브리핑]",
+      "link": "https://www.kukinews.com/article/view/kuk202512160181",
+      "press": "쿠키뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "뉴욕주 독감환자 속출 전주보다 80% 급증",
+      "link": "http://www.koreatimes.com/article/1592742",
+      "press": "미주한국일보",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "[의학칼럼] 겨울철 독감·폐렴, 면역 저하 고위험군에 직격탄",
+      "link": "https://gg.newdaily.co.kr/site/data/html/2025/12/10/2025121000217.html",
+      "press": "뉴데일리",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "내년 의원급 표본감시기관 3배 늘린다",
+      "link": "https://www.naeil.com/news/read/570655?ref=naver",
+      "press": "내일신문",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "겨울철 호흡기감염병 유행 '비상'… 고위험군, 코로나19 백신 접종 필요",
+      "link": "https://www.100ssd.co.kr/news/articleView.html?idxno=203948",
+      "press": "백세시대",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "독감 급증, 소아·청소년 중심 확산... '집단 감염' 경계",
+      "link": "https://www.hinews.co.kr/view.php?ud=2025121110532152536aa9cc43d0_48",
+      "press": "하이뉴스",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "독감 다시 급증, 영유아·학령기 아동 중심 확산세 뚜렷",
+      "link": "http://www.doctorstimes.com/news/articleView.html?idxno=235839",
+      "press": "의사신문",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "[11월~12월 제약사 이모저모]노바셀, 삼성바이오에피스, 한국아스트라제...",
+      "link": "https://medicalworldnews.co.kr/news/view.php?idx=1510971862",
+      "press": "메디컬월드뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "[명의칼럼] 유행성 감기 증상 정확히 구분, ‘풍한형‘ ’풍열형‘ 달리...",
+      "link": "https://www.viva100.com/article/20251207500563",
+      "press": "브릿지경제",
+      "date": "2025-12-15",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "중증열성혈소판감소증후군 mRNA 백신 개발 국제 공동 연구 착수",
+      "link": "https://zdnet.co.kr/view/?no=20251209150700",
+      "press": "지디넷코리아",
+      "date": "2025-12-15",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "[1분건강] 독감 또 유행한다…아동 중심 확산",
+      "link": "https://zdnet.co.kr/view/?no=20251212172147",
+      "press": "지디넷코리아",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    },
+    {
+      "title": "질병청, 감염병 유형별 맞춤 대응체계 구축…mRNA 백신 2028년 국산화",
+      "link": "https://medicalworldnews.co.kr/news/view.php?idx=1510971904",
+      "press": "메디컬월드뉴스",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "AI가 분석한 2025 한국인 건강관리 10대 트렌드",
+      "link": "http://www.k-health.com/news/articleView.html?idxno=88142",
+      "press": "헬스경향",
+      "date": "2025-12-22",
+      "sentiment": "Neutral"
+    },
+    {
+      "title": "RNA 직접 검출하는 차세대 CRISPR 진단기술 개발",
+      "link": "https://www.koreahealthlog.com/news/articleView.html?idxno=55061",
+      "press": "코리아헬스로그",
+      "date": "2025-12-22",
+      "sentiment": "Positive"
+    },
+    {
+      "title": "독감 다시 급증, 영유아·학령기 아동 중심 확산세 뚜렷...\"0집단 감염 우...",
+      "link": "http://www.thefirstmedia.net/news/articleView.html?idxno=188699",
+      "press": "더퍼스트",
+      "date": "2025-12-15",
+      "sentiment": "Negative"
+    }
+  ],
+  "updated_at": "2025-12-29 22:25:18"
+}
