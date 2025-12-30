@@ -218,8 +218,9 @@ with st.sidebar:
                 with st.spinner("Processing..."):
                     if run_analysis_pipeline(new_keyword, start_d, end_d):
                         st.balloons()
-                        # Refresh keyword list
-                        # st.rerun() # might interrupt balloons, better to just let user manually change
+                        st.success(f"✅ '{new_keyword}' analysis complete! Refreshing...")
+                        time.sleep(2)  # Show success message before refresh
+                        st.rerun()  # Refresh to update keyword list
             else:
                 st.warning("Please enter a keyword.")
 
@@ -353,6 +354,13 @@ if selected_keyword and selected_keyword != "Select a keyword...":
                 daily_sentiment = df.groupby(['date', 'sentiment']).size().reset_index(name='count')
                 daily_total = df.groupby('date').size().reset_index(name='total')
                 
+                # Debug: Print sentiment distribution
+                print("=== DEBUG: Sentiment Distribution ===")
+                print(daily_sentiment.head(20))
+                print(f"\nTotal Positive: {df[df['sentiment'] == 'Positive'].shape[0]}")
+                print(f"Total Negative: {df[df['sentiment'] == 'Negative'].shape[0]}")
+                print(f"Total Neutral: {df[df['sentiment'] == 'Neutral'].shape[0]}")
+                
                 # Create complete dataframes with all dates for each sentiment
                 sentiments = ['Positive', 'Negative', 'Neutral']
                 complete_sentiment_data = {}
@@ -372,52 +380,53 @@ if selected_keyword and selected_keyword != "Select a keyword...":
                 complete_total = complete_total.merge(daily_total, on='date', how='left')
                 complete_total['total'] = complete_total['total'].fillna(0).astype(int)
                 
-                # Area Chart: Positive (Blue) + Negative (Red) + Neutral (Gray) with Total as black dashed line
+                # Overlaid Area Chart: Each sentiment fills from zero independently
                 fig = go.Figure()
+                
+                # Add areas in order from largest to smallest for better visibility
+                # Add Negative area (red) - usually largest, so add first
+                negative_data = complete_sentiment_data['Negative']
+                fig.add_trace(go.Scatter(
+                    x=negative_data['date'].tolist(),
+                    y=negative_data['count'].tolist(),
+                    mode='lines',
+                    name='부정 (Negative)',
+                    line=dict(color='#e74c3c', width=2, shape='spline'),  # Increased width for visibility
+                    fill='tozeroy',
+                    fillcolor='rgba(231, 76, 60, 0.5)',
+                    hovertemplate='<b>부정</b><br>%{y}<extra></extra>'
+                ))
                 
                 # Add Positive area (blue)
                 positive_data = complete_sentiment_data['Positive']
                 fig.add_trace(go.Scatter(
-                    x=positive_data['date'],
-                    y=positive_data['count'],
+                    x=positive_data['date'].tolist(),
+                    y=positive_data['count'].tolist(),
                     mode='lines',
                     name='긍정 (Positive)',
-                    line=dict(color='#3498db', width=2, shape='spline'),
+                    line=dict(color='#3498db', width=2, shape='spline'),  # Increased width for visibility
                     fill='tozeroy',
-                    fillcolor='rgba(52, 152, 219, 0.3)',
+                    fillcolor='rgba(52, 152, 219, 0.5)',
                     hovertemplate='<b>긍정</b><br>%{y}<extra></extra>'
                 ))
                 
-                # Add Negative area (red)
-                negative_data = complete_sentiment_data['Negative']
-                fig.add_trace(go.Scatter(
-                    x=negative_data['date'],
-                    y=negative_data['count'],
-                    mode='lines',
-                    name='부정 (Negative)',
-                    line=dict(color='#e74c3c', width=2, shape='spline'),
-                    fill='tozeroy',
-                    fillcolor='rgba(231, 76, 60, 0.3)',
-                    hovertemplate='<b>부정</b><br>%{y}<extra></extra>'
-                ))
-                
-                # Add Neutral area (gray)
+                # Add Neutral area (gray) - smallest, add last so it's on top
                 neutral_data = complete_sentiment_data['Neutral']
                 fig.add_trace(go.Scatter(
-                    x=neutral_data['date'],
-                    y=neutral_data['count'],
+                    x=neutral_data['date'].tolist(),
+                    y=neutral_data['count'].tolist(),
                     mode='lines',
                     name='중립 (Neutral)',
-                    line=dict(color='#95a5a6', width=2, shape='spline'),
+                    line=dict(color='#95a5a6', width=2, shape='spline'),  # Increased width for visibility
                     fill='tozeroy',
-                    fillcolor='rgba(149, 165, 166, 0.3)',
+                    fillcolor='rgba(149, 165, 166, 0.5)',
                     hovertemplate='<b>중립</b><br>%{y}<extra></extra>'
                 ))
                 
-                # Add Total line (black dashed)
+                # Add Total line (black dashed) - separate from stack
                 fig.add_trace(go.Scatter(
-                    x=complete_total['date'],
-                    y=complete_total['total'],
+                    x=complete_total['date'].tolist(),
+                    y=complete_total['total'].tolist(),
                     mode='lines+markers',
                     name='전체 기사량',
                     line=dict(color='#000000', width=2, dash='dot', shape='spline'),
@@ -426,13 +435,14 @@ if selected_keyword and selected_keyword != "Select a keyword...":
                 ))
                 
                 fig.update_layout(
-                    title="SENTIMENT TREND",
-                    xaxis_title="",
-                    yaxis_title="",
+                    title=None,  # Removed title as requested
+                    xaxis_title=None,
+                    yaxis_title=None,  # Removed Y-axis title as requested
                     hovermode='x unified',
                     height=450,
+                    margin=dict(t=40, b=80, l=50, r=20),  # Increased bottom margin for date labels
                     xaxis=dict(
-                        type='category',  # Use category to show only actual dates
+                        type='category',
                         tickangle=-45,
                         showgrid=True,
                         gridcolor='rgba(128, 128, 128, 0.2)'
@@ -444,42 +454,48 @@ if selected_keyword and selected_keyword != "Select a keyword...":
                     legend=dict(
                         orientation="h",
                         yanchor="top",
-                        y=1.15,
+                        y=1.02,  # Adjusted legend position
                         xanchor="right",
                         x=1
                     ),
                     plot_bgcolor='white',
                     paper_bgcolor='white'
                 )
+
+                # Use streamlit-plotly-events to capture click events
+                from streamlit_plotly_events import plotly_events
                 
-                # Use plotly_chart with on_select callback
-                selected = st.plotly_chart(fig, use_container_width=True, key='combined_chart', on_select='rerun')
+                # Display chart with click event handling
+                selected_points = plotly_events(fig, click_event=True, hover_event=False, select_event=False, override_height=450, override_width="100%", key="sentiment_chart")
                 
                 # Handle click event
-                if selected and selected.selection and 'points' in selected.selection:
-                    points = selected.selection['points']
-                    if points:
-                        # Get the clicked date
-                        st.session_state.selected_date = points[0]['x']
+                if selected_points and len(selected_points) > 0:
+                    clicked_point = selected_points[0]
+                    if 'x' in clicked_point:
+                        clicked_date = clicked_point['x']
+                        # Only update if it's a different date
+                        if st.session_state.get('selected_date') != clicked_date:
+                            st.session_state.selected_date = clicked_date
+                            st.rerun()
                 
                 # Article List
                 st.subheader("Recent Articles")
+                
+                # Show "Show All Dates" button AFTER "Recent Articles" when a date is selected
+                if st.session_state.selected_date:
+                    st.info(f"📅 Filtered by date: **{st.session_state.selected_date}**")
+                    if st.button("🔄 Show All Dates", key="show_all_dates_btn", use_container_width=True, type="primary"):
+                        st.session_state.selected_date = None
+                        st.session_state.sentiment_filter = ['Positive', 'Negative', 'Neutral']
+                        st.rerun()
                 
                 # Initialize sentiment filter in session state if not exists
                 if 'sentiment_filter' not in st.session_state:
                     st.session_state.sentiment_filter = ['Positive', 'Negative', 'Neutral']
                 
-                # Date filter based on chart click
+                # Date filter based on selected date
                 if st.session_state.selected_date:
-                    st.info(f"Showing articles from: **{st.session_state.selected_date}**")
                     filtered_df = df[df['date'] == st.session_state.selected_date]
-                    # Show All Dates button - centered
-                    col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
-                    with col_btn2:
-                        if st.button("Show All Dates", use_container_width=True, type="secondary"):
-                            st.session_state.selected_date = None
-                            st.session_state.sentiment_filter = ['Positive', 'Negative', 'Neutral']
-                            st.rerun()
                 else:
                     # Sentiment filter
                     sentiment_filter = st.multiselect(
@@ -656,6 +672,40 @@ if selected_keyword and selected_keyword != "Select a keyword...":
                             st.success("✅ Translation complete!")
                         except Exception as e:
                             st.warning(f"⚠️ Translation failed: {e}. Showing original Korean report.")
+            
+            
+            # Remove the first H1 heading (main report title)
+            import re
+            if report_content != "No report content.":
+                # Remove the first H1 heading (# Title)
+                report_content = re.sub(r'^#\s+[^\n]+\n+', '', report_content, count=1, flags=re.MULTILINE)
+            
+            # Add CSS for consistent line spacing in the report
+            st.markdown("""
+                <style>
+                /* Ensure consistent line spacing for all report content */
+                .stMarkdown p {
+                    line-height: 1.6 !important;
+                    margin-bottom: 1em !important;
+                }
+                .stMarkdown ul, .stMarkdown ol {
+                    line-height: 1.6 !important;
+                    margin-bottom: 1em !important;
+                }
+                .stMarkdown li {
+                    line-height: 1.6 !important;
+                    margin-bottom: 0.5em !important;
+                }
+                .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
+                    line-height: 1.4 !important;
+                    margin-top: 0.5em !important;
+                    margin-bottom: 0.4em !important;
+                }
+                .stMarkdown table {
+                    line-height: 1.6 !important;
+                }
+                </style>
+            """, unsafe_allow_html=True)
             
             st.markdown(report_content, unsafe_allow_html=True)
             

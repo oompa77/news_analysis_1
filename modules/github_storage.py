@@ -83,11 +83,13 @@ def load_report(keyword):
 
 def get_keyword_list():
     """
-    Returns a list of keywords (files) available in storage.
+    Returns a sorted list of keywords (files) available in storage.
+    Combines keywords from both GitHub and local storage.
     """
     keywords = []
     repo = get_repo()
     
+    # Try to get keywords from GitHub
     if repo:
         try:
             contents = repo.get_contents("data")
@@ -97,18 +99,30 @@ def get_keyword_list():
                     contents.extend(repo.get_contents(file_content.path))
                 else:
                     if file_content.name.endswith(".json"):
-                        keywords.append(file_content.name.replace(".json", ""))
-            return keywords
+                        keyword = file_content.name.replace(".json", "")
+                        if keyword not in keywords:  # Manual dedup
+                            keywords.append(keyword)
+            print(f"Found {len(keywords)} keywords from GitHub")
         except Exception as e:
             print(f"Error listing files from GitHub: {e}")
     
-    # Local Fallback
+    # Also check local storage (merge with GitHub results)
     if os.path.exists("data"):
-        for file in os.listdir("data"):
-            if file.endswith(".json"):
-                keywords.append(file.replace(".json", ""))
+        try:
+            local_count = 0
+            for file in os.listdir("data"):
+                if file.endswith(".json"):
+                    keyword = file.replace(".json", "")
+                    if keyword not in keywords:  # Manual dedup
+                        keywords.append(keyword)
+                        local_count += 1
+            if local_count > 0:
+                print(f"Found {local_count} additional keywords from local storage")
+        except Exception as e:
+            print(f"Error listing local files: {e}")
     
-    return list(set(keywords)) # Dedup
+    print(f"Total keywords: {len(keywords)}")
+    return sorted(keywords)  # Return sorted list
 
 def delete_report(keyword):
     """
