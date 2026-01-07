@@ -14,13 +14,14 @@ def get_model():
         raise ValueError("GOOGLE_API_KEY not found in environment variables.")
     
     genai.configure(api_key=api_key)
-    # Using gemini-2.5-flash-lite (has available quota, 2.0-flash quota exceeded)
-    return genai.GenerativeModel('gemini-2.5-flash-lite')
+    # Using gemini-2.5-flash (latest stable version)
+    return genai.GenerativeModel('gemini-2.5-flash')
 
-def analyze_sentiment_batch(articles, batch_size=50):
+def analyze_sentiment_batch(articles, batch_size=25):
     """
     Analyzes sentiment for a batch of articles using Gemini.
     Returns a list of sentiments corresponding to the articles.
+    Batch size reduced to 25 for better accuracy with large article counts (500+).
     """
     if not articles:
         return []
@@ -36,13 +37,32 @@ def analyze_sentiment_batch(articles, batch_size=50):
         titles = [f"{j+1}. {article['title']}" for j, article in enumerate(batch)]
         titles_text = "\n".join(titles)
         
-        prompt = f"""다음 뉴스 제목들의 감정을 분석해주세요.
+        prompt = f"""다음 뉴스 제목들의 감정을 정확하게 분석해주세요.
 각 제목을 '긍정', '부정', 또는 '중립'으로 분류하세요.
 
 분류 기준:
-- 긍정 (Positive): 좋은 소식, 성장, 발전, 성공 등
-- 부정 (Negative): 나쁜 소식, 문제, 사고, 논란, 비판 등  
-- 중립 (Neutral): 단순 정보 전달, 일반적인 소식
+
+**긍정 (Positive)**:
+- 성과, 성장, 발전, 성공, 호조, 증가, 개선, 혁신, 승리, 달성
+- 긍정적 전망, 기대, 환영, 지지, 칭찬
+- 예시: "○○, 역대 최고 실적 달성", "○○ 기술 세계 1위 등극", "○○ 주가 급등", "○○ 긍정 평가 확산"
+
+**부정 (Negative)**:
+- 문제, 사고, 논란, 비판, 우려, 감소, 악화, 갈등, 실패, 손실
+- 부정적 전망, 위기, 경고, 반발, 비난
+- 예시: "○○, 대규모 결함 발견", "○○ 논란 확산", "○○ 주가 폭락", "○○ 비판 여론 고조"
+
+**중립 (Neutral)**:
+- **매우 엄격하게 적용**: 오직 순수한 사실 전달만 하며 긍정도 부정도 아닌 경우에만 해당
+- 일정 안내, 단순 공지, 통계 발표(감정적 뉘앙스 없이)
+- 예시: "○○, 내일 기자회견 개최", "○○ 신제품 출시 예정", "○○, 연례 보고서 발표"
+
+**중요 규칙**:
+1. 조금이라도 긍정적이거나 부정적인 뉘앙스가 있다면 중립이 아닙니다
+2. 애매한 경우, 제목의 전반적인 톤을 고려하여 긍정 또는 부정 중 더 가까운 쪽으로 분류하세요
+3. "논란", "우려", "불안", "위기" 등의 단어는 부정으로 분류
+4. "성과", "성공", "호조", "증가" 등의 단어는 긍정으로 분류
+5. 중립은 전체의 10-20% 정도만 되도록 신중하게 판단하세요
 
 반드시 JSON 배열 형태로만 답변하세요. 예: ["Positive", "Negative", "Neutral", ...]
 다른 설명 없이 JSON만 출력하세요.
@@ -88,121 +108,375 @@ def analyze_sentiment_batch(articles, batch_size=50):
     
     return all_sentiments
 
-def generate_issue_report(keyword, articles, sentiment_summary):
-    """
-    Generates a comprehensive issue report using Gemini.
-    """
-    if not articles:
-        return "No articles found to analyze."
 
+
+
+
+
+    
+
+
+
+
+    
+
+
+def clean_json_text(text):
+    """
+    Cleans the AI response text to extract valid JSON.
+    Removes markdown code blocks and whitespace.
+    """
+    text = text.strip()
+    # Remove markdown code blocks if present
+    if text.startswith("```"):
+        # Remove first line (```json or just ```)
+        parts = text.split("\n", 1)
+        if len(parts) > 1:
+            text = parts[1]
+    
+    if text.strip().endswith("```"):
+        text = text.strip()[:-3]
+        
+    return text.strip()
+
+def generate_issue_report(keyword, articles, context_summary, total_count=None):
+    """
+    Generates a structured JSON report using Gemini.
+    """
     model = get_model()
     
-    # Limit articles for context window if necessary (though 1.5 has large context)
-    # We will pass Title, Date, Press, and Sentiment
+    # Check prompt length (safety mechanism)
+    # Check prompt length (safety mechanism) - Increased for full coverage
+    articles_text = json.dumps(articles[:3000], ensure_ascii=False)
     
-    articles_text = ""
-    for art in articles[:50]: # Context limit safety (top 50)
-        articles_text += f"- [{art.get('date', 'Unknown Date')}] {art['title']} ({art.get('press', 'Unknown Press')})\n"
-
-    stats_text = f"Total: {len(articles)}, Sentiment: {sentiment_summary}"
-
     prompt = f"""
-    You are an expert news analyst. Create a high-quality 'Issue Report' for the keyword: '{keyword}'.
-    Use the following news data (Title, Date, Press) to generate a professional, structured report.
+    You are an expert news analyst. Your task is to analyze {len(articles)} news articles about '{keyword}' and generate a structured JSON report.
     
-    ## Data Summary
-    {stats_text}
+    CONTEXT SUMMARY:
+    {context_summary}
     
-    ## News Headlines (Sample)
+    INSTRUCTIONS:
+    1. Analyze the articles provided below.
+    2. **CRITICAL**: You MUST generate a 'daily_trends' entry for **EVERY SINGLE DATE** present in the articles. Do NOT summarize multiple days into one. Do NOT skip any dates. Processing time is not an issue.
+    3. Output ONLY valid JSON matching the structure below.
+    3. Do NOT use markdown code blocks (e.g. ```json). Just raw JSON.
+    4. ESCAPE all double quotes within string values (e.g. \\"quote\\"). This is CRITICAL.
+    5. Ensure all JSON keys and string values are properly quoted.
+    6. **LANGUAGE**: All content values MUST be in **KOREAN** (한국어).
+    
+    JSON STRUCTURE:
+    {{
+        "executive_summary": {{
+            "total_articles": {len(articles)},
+            "tone_analysis": "Overall tone narrative (2-3 sentences). Focus on HOT TOPICS first.",
+            "key_takeaways": ["Point 1", "Point 2", "Point 3"]
+        }},
+        "daily_trends": [
+            {{
+                "date": "YYYY-MM-DD",
+                "volume": 0,
+                "one_line_summary": "One sentence daily summary",
+                "narrative_summary": "Detailed narrative of the day's events",
+                "sub_topics": [
+                    {{
+                        "name": "Topic Name",
+                        "count": 0,
+                        "percent": 0.0,
+                        "description": "One line explanation of the topic content",
+                        "examples": "Example entities"
+                    }}
+                ],
+                "key_findings": {{
+                    "article_analysis": ["Key Point 1", "Key Point 2"],
+                    "media_focus": ["Media Focus 1", "Media Focus 2"],
+                    "dynamics": ["Brand/Person Dynamics"]
+                }},
+                "daily_themes": [
+                    {{
+                        "name": "Theme Name",
+                        "stats": "Article count info",
+                        "core_message": "Core Message",
+                        "details": [ "Detail 1", "Detail 2" ],
+                        "reporter_traits": "Reporter characteristics",
+                        "social_impact": "Social impact description"
+                    }}
+                ],
+                "issue_short": "Main issue in max 4 Korean words",
+                "sentiment_stat": "긍정 00%, 중립 00%, 부정 00%" ,
+                "key_people": "Important people mentioned"
+            }}
+        ],
+        "peak_analysis": [
+            {{ "order": 1, "date": "YYYY-MM-DD", "volume": 0, "reason": "초단문 키워드 (2-3단어, 예: 논란 점화, 티저 공개)" }}
+        ],
+        "keyword_analysis": {{
+            "people": [
+                {{ "rank": 1, "keyword": "Name", "count": 0, "context": "Role/Issue" }}
+                // ... Top 10 (Strictly identify top 10 key figures)
+            ],
+            "topics": [
+                 {{ "rank": 1, "keyword": "Word", "count": 0, "context": "Context" }}
+                 // ... Top 10 (Strictly use single "Words" centering on the topic, NOT phrases)
+            ],
+            "brands_companies": [
+                 {{ "rank": 1, "keyword": "Brand/Company", "count": 0, "context": "Context" }}
+                 // ... Top 10 (Strictly identify top 10 brands or companies. Clean names only. Exclude general terms.)
+            ]
+        }},
+        "detailed_topic_analysis": {{
+            "hot_topics": [ {{ "title": "T", "content": "C" }} ],
+            "controversy_analysis": [ {{ "title": "T", "content": "C" }} ],
+            "brand_collabs": {{
+                "overview": "Overview of industry trends",
+                "cases": [
+                    {{
+                        "brand_name": "Brand Name",
+                        "collaborator": "Partner (Person/Company)",
+                        "campaign_detail": "Specific Campaign/Product",
+                        "marketing_action": "Marketing Strategy/Action"
+                    }}
+                ]
+            }}
+        }},
+        "time_series_flow": {{
+            "early": {{ "period": "", "major_reports": "", "public_reaction": "" }},
+            "middle": {{ "period": "", "major_reports": "", "public_reaction": "" }},
+            "late": {{ "period": "", "major_reports": "", "public_reaction": "" }}
+        }},
+        "conclusion": "Conclusion text"
+    }}
+
+    ARTICLES:
     {articles_text}
-    
-    ## Report Structure & Requirements
-    
-    1. **개요 (Executive Summary)**
-       - 총 집계 기사 건수와 톤 분석
-       - 전반적인 보도 기조 (긍정적/부정적/균형적)
-       - 주요 보도 내용 3-5가지 핵심 카테고리 요약
-    
-    2. **여론 흐름 및 전환점 (Public Opinion Flow & Turning Points)**
-       - 시간 순서대로 여론의 변화를 국면별(Phase)로 분석 (2-4개 국면)
-       - 각 Phase는 ### 헤딩 레벨로 작성: "### Phase 1", "### Phase 2", "### Phase 3", "### Phase 4"
-       - 각 Phase별: [날짜], 주요 보도 내용, 대중 반응, 감성 기조 포함
-       - **전환점 (Turning Point)**: Phase와 동일한 ### 헤딩 레벨로 작성: "### 전환점 (Turning Point)"
-       - 전환점 내용: 여론 방향이 바뀐 결정적 사건, 전후 보도 톤 변화, 야기한 주요 요인 분석
-       - 명확한 전환점이 없다면 이 섹션을 생략
-       - **중요**: 마크다운 형식을 정확히 사용 (### 다음에 공백 한 칸, 그 다음 제목)
-    
-    3. **헤드라인 및 프레임 분석 (Frame Analysis)**
-       3.1 **프레임 유형 분류**: 
-          - 실제 뉴스 헤드라인과 내용을 분석하여 주요 프레임 카테고리를 3-6개 도출
-          - 각 프레임별로: 프레임명, 기사 건수, 대표 사례 또는 특징 설명, 비율(%)
-          - **표 형식**: 프레임명 | 기사 건수 | 대표 사례 또는 특징 설명 | 비율(%) 순서로 컬럼 배치
-          - 예시 프레임: 책임 소재, 갈등, 인간 관심, 경제적 결과, 윤리/도덕, 정책/제도, 사회적 영향, 기술/혁신 등
-          - 데이터에 기반하여 가장 두드러진 프레임을 자동으로 선정하고 분류
-       3.2 **헤드라인 톤 분석**: 
-          - 실제 헤드라인에 사용된 어휘를 분석하여 톤 카테고리를 3-5개 도출
-          - 각 톤별로: 톤 유형명, 대표 어휘 예시, 비율(%)
-          - 예시 톤 유형: 선정적/자극적, 중립적/사실전달, 완화적/긍정적, 비판적/부정적, 분석적/해설적 등
-          - **중요**: 모든 톤 카테고리의 비율 합계가 정확히 100%가 되도록 계산
-          - 데이터에 기반하여 실제로 사용된 톤을 자동으로 분류
-          - **주의**: 비율 합계 계산식(예: "43.9 + 30.8 + 23.1 = 100%")은 표시하지 말고, 각 톤별 비율만 표시
-       3.3 **토픽 모델링**: 주요 논점 토픽 3-5개 도출 (주제명, 대표 키워드, 비율(%))
-       3.4 **키워드 네트워크**:
-          - **키워드 분석**: 자주 함께 등장하는 주요 키워드들을 분석하여 이슈의 맥락 파악
-          - **유관 키워드 TOP 10**: 
-            * Format: "N. <mark>Keyword1/Keyword2/Keyword3</mark> (Context/Meaning)" 
-            * 반드시 <mark> 태그를 사용하여 키워드 조합을 강조하세요.
-          - 키워드 간 연관성 분석
-    
-    4. **주요 쟁점 분석 (Key Issues)**
-       - 이슈의 핵심 논점 3-5가지 정리
-       - 각 쟁점별: 쟁점명, 구체적 논점 설명, 관련 기사 건수/비율, 대중 반응, 잠재적 영향
-    
-    5. **언론사 비교 분석**
-       5.1 **언론사별 편향성 평가**: 보수, 진보, 중도/경제 매체별 주요 프레임 및 어조 비교
-       5.2 **언론사별 보도 분포**: 
-          - **활발한 상위 5개사**: 보도 건수가 많은 순서대로 정렬 (1위부터 5위까지)
-          - 각 언론사별: 언론사명, 기사 건수, 비율(%)
-          - 대형 매체 vs 중소 매체 비교 및 특징 분석
-    
-    6. **결론 및 향후 전망 (Conclusion & Future Scenarios)**
-       6.1 **종합 평가**: 이슈 심각도(상/중/하), 대중 감성 방향, 주요 리스크 및 기회 요인
-       6.2 **향후 전망 시나리오**: 
-          - 각 시나리오별로 일관된 형식 사용
-          - **긍정적 전개 (Best)**: 
-            * 가능성: [평가]
-            * 예상 결과 및 조건: (하위 항목들을 bullet point로 나열)
-          - **현상 유지 (Likely)**: 
-            * 가능성: [평가]
-            * 예상 결과 및 조건: (하위 항목들을 bullet point로 나열)
-          - **부정적 심화 (Worst)**: 
-            * 가능성: [평가]
-            * 예상 결과 및 조건: (하위 항목들을 bullet point로 나열)
-          - **중요**: 모든 시나리오의 하위 항목(가능성, 예상 결과 및 조건) 사이에 동일한 줄간격 유지
-          - **중요**: "예상 결과 및 조건" 하위의 모든 bullet point들도 동일한 줄간격으로 작성
-       6.3 **권고사항 (Recommendations)**: 
-          - **커뮤니케이션 전략**: 
-            * 구체적인 전략 3-5가지를 bullet point로 나열
-            * 각 항목 사이에 동일한 줄간격 유지
-          - **모니터링 포인트**: 
-            * 주요 모니터링 항목 3-5가지를 bullet point로 나열
-            * 각 항목 사이에 동일한 줄간격 유지
-          - **리스크 관리 방안**: 
-            * 구체적인 관리 방안 3-5가지를 bullet point로 나열
-            * 각 항목 사이에 동일한 줄간격 유지
-          - **중요**: 모든 하위 섹션(커뮤니케이션 전략, 모니터링 포인트, 리스크 관리 방안)의 bullet point들은 동일한 줄간격과 들여쓰기 사용
-    
-    Write in Korean. Professional and analytical tone.
-    Output ONLY the Markdown content. Use proper headers and bullet points.
-    Ensure HTML tags like <mark> are used strictly following the format in section 3.4.
     """
     
     try:
-        response = model.generate_content(prompt)
-        return response.text
+        if len(prompt) > 1000000:
+             # Simple truncation if too long
+             prompt = prompt[:1000000] + "... (truncated)"
+
+        # Configure for valid JSON output
+        generation_config = {
+            "temperature": 0.5,
+            "response_mime_type": "application/json"
+        }
+        
+        response = model.generate_content(prompt, generation_config=generation_config)
+        text = response.text
+        
+        # Clean JSON text
+        cleaned_text = clean_json_text(text)
+        
+        try:
+             json_data = json.loads(cleaned_text)
+             # Validate math
+             json_data = validate_and_fix_math(json_data)
+             return json.dumps(json_data, ensure_ascii=False)
+        except json.JSONDecodeError as e:
+             # Fallback: Try to find the first '{' and last '}'
+             try:
+                 start_idx = text.find('{')
+                 end_idx = text.rfind('}')
+                 if start_idx != -1 and end_idx != -1:
+                     potential_json = text[start_idx:end_idx+1]
+                     json_data = json.loads(potential_json)
+                     json_data = validate_and_fix_math(json_data)
+                     return json.dumps(json_data, ensure_ascii=False)
+             except:
+                 pass
+             
+             print(f"Error parsing JSON response: {e}")
+             return json.dumps({"error": f"JSON parsing failed: {e}", "raw_response": text[:100]}, ensure_ascii=False)
+
     except Exception as e:
+        import traceback
+        error_trace = traceback.format_exc()
         print(f"Error generating report: {e}")
-        raise  # Re-raise to let caller handle the error
+        print(f"Full traceback:\n{error_trace}")
+        return json.dumps({
+            "executive_summary": {"total_articles": 0, "tone_analysis": "Error", "key_takeaways": [str(e)]},
+            "error": str(e),
+            "traceback": error_trace[:500]
+        }, ensure_ascii=False)
+
+
+
+def validate_and_fix_math(json_data, total_count_for_day=None):
+    """
+    Enforces that 'sub_topics' counts sum up to the day's total volume.
+    Uses 'Others' (기타) category for under-counts.
+    """
+    try:
+        daily_trends = json_data.get('daily_trends', [])
+        for day in daily_trends:
+            # Use total_count_for_day if provided, otherwise try to get from 'volume' field
+            total_vol = total_count_for_day if total_count_for_day is not None else day.get('volume')
+            
+            if isinstance(total_vol, str):
+                if total_vol.isdigit(): total_vol = int(total_vol)
+                else: 
+                    print(f"Warning: 'volume' is not a valid integer: {total_vol}. Skipping math validation for this day.")
+                    continue
+            
+            if not isinstance(total_vol, int) or total_vol < 0:
+                print(f"Warning: Invalid 'volume' ({total_vol}) for math validation. Skipping for this day.")
+                continue
+            
+            sub_topics = day.get('sub_topics', [])
+            if not sub_topics:
+                # If no sub_topics, and total_vol > 0, add an 'Others' category
+                if total_vol > 0:
+                    day['sub_topics'] = [{
+                        "name": "기타",
+                        "count": total_vol,
+                        "percent": 100.0,
+                        "examples": "-"
+                    }]
+                continue
+                
+            # Calculate current sum
+            current_sum = sum(int(t.get('count', 0)) for t in sub_topics if str(t.get('count', 0)).isdigit())
+            
+            diff = total_vol - current_sum
+            
+            if diff > 0:
+                # Under-counted: Add 'Others' category
+                others_topic = next((t for t in sub_topics if '기타' in t.get('name', '') or 'Others' in t.get('name', '')), None)
+                
+                if others_topic:
+                    others_topic['count'] = int(others_topic.get('count', 0)) + diff
+                else:
+                    # Create new 'Others' topic
+                    sub_topics.append({
+                        "name": "기타",
+                        "count": diff,
+                        "percent": 0, # Will be recalc
+                        "examples": "-"
+                    })
+            elif diff < 0:
+                # Over-counted: Subtract from largest topic (that isn't others preferably, or just largest)
+                sorted_indices = sorted(range(len(sub_topics)), key=lambda k: int(sub_topics[k].get('count', 0)), reverse=True)
+                
+                remaining_diff = abs(diff)
+                for idx in sorted_indices:
+                    current_count = int(sub_topics[idx].get('count', 0))
+                    if current_count >= remaining_diff:
+                        sub_topics[idx]['count'] = current_count - remaining_diff
+                        remaining_diff = 0
+                        break
+                    else:
+                        # If the current topic's count is less than the remaining_diff,
+                        # set it to 0 and reduce remaining_diff by current_count.
+                        remaining_diff -= current_count
+                        sub_topics[idx]['count'] = 0
+                
+                if remaining_diff > 0:
+                    print(f"Warning: Could not fully correct over-counted sub_topics. Remaining diff: {remaining_diff}")
+            
+            # Recalculate Percentages
+            for t in sub_topics:
+                cnt = int(t.get('count', 0))
+                if total_vol > 0:
+                    pct = round((cnt / total_vol) * 100, 1) # 1 decimal place
+                else:
+                    pct = 0
+                t['percent'] = pct
+            
+            # Ensure the 'volume' field in the JSON matches the actual total_vol used for calculation
+            day['volume'] = total_vol
+                
+    except Exception as e:
+        print(f"Math validation error: {e}")
+        
+    return json_data
+
+def translate_daily_report(daily_data, target_lang='English'):
+    """
+    Translates the relevant fields of a daily summary (key_issue, sub_topics) into the target language.
+    """
+    prompt = f"""
+    You are a professional translator. 
+    Translate the following JSON content into {target_lang}.
+    Maintain the original JSON structure strictly.
+    Only translate the "value" strings. Do not translate keys.
+    
+    Data to translate:
+    {json.dumps(daily_data, ensure_ascii=False)}
+    
+    Output Format: JSON
+    """
+    
+    try:
+        # Configure for valid JSON output
+        generation_config = {
+            "temperature": 0.5,
+            "response_mime_type": "application/json"
+        }
+        response = model.generate_content(prompt, generation_config=generation_config)
+        text = response.text.strip()
+        # Clean up Markdown
+        if text.startswith("```json"):
+            text = text[7:]
+        elif text.startswith("```"):
+            text = text[3:]
+        if text.endswith("```"):
+            text = text[:-3]
+            
+        return json.loads(text)
+    except Exception as e:
+        print(f"Translation error: {e}")
+        return daily_data  # Fallback to original
+
+def translate_global_report(report_data, target_lang='English'):
+    """
+    Translates the entire global report into the target language.
+    Translates structurally by section to minimize context window issues.
+    """
+    model = get_model() # Fix: Initialize model
+    
+    prompt = f"""
+    You are a professional translator. 
+    Translate the following Global Analysis Report content into {target_lang}.
+    
+    INSTRUCTIONS:
+    1. Maintain the original JSON structure strictly.
+    2. Only translate string values (values of keys). Do not translate keys.
+    3. Translate:
+       - executive_summary (tone_analysis, key_takeaways)
+       - daily_trends (issue_short, sentiment_stat usually stays similar but check, one_line_summary, narrative_summary, sub_topics.name/description, key_findings, daily_themes)
+       - peak_analysis (reason)
+       - keyword_analysis (context)
+       - detailed_topic_analysis (content, overview, cases)
+       - time_series_flow (period, major_reports, public_reaction)
+       - conclusion
+    4. Return ONLY valid JSON.
+
+    Data to translate:
+    {json.dumps(report_data, ensure_ascii=False)}
+    """
+    
+    try:
+        # Configure for valid JSON output
+        generation_config = {
+            "temperature": 0.5,
+            "response_mime_type": "application/json"
+        }
+        
+        # Check token limit roughly - if too huge we might need to split, but for report dict it should be fine logic-wise
+        # If deeply large, we rely on Gemini 2.0's large context window.
+        
+        response = model.generate_content(prompt, generation_config=generation_config)
+        text = response.text.strip()
+        
+        if text.startswith("```json"):
+            text = text[7:]
+        if text.endswith("```"):
+            text = text[:-3]
+            
+        return json.loads(text)
+    except Exception as e:
+        print(f"Global translation error: {e}")
+        return report_data
 
 def translate_report(report_content, target_language="English"):
     """

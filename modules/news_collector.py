@@ -569,7 +569,7 @@ def search_naver_news(keyword, start_date, end_date, time_range='all'):
             f"where=news&"
             f"query={encoded_keyword}&"
             f"sm=tab_dgs&"
-            f"sort=0&"
+            f"sort=1&"  # 1 = Latest first (최신순), 0 = Relevance (정확도순)
             f"pd=3&"
             f"ds={start_date.replace('-', '.')}&"
             f"de={end_date.replace('-', '.')}&"
